@@ -1,6 +1,6 @@
 import { cdn_url } from "../../utils/constants";
 const ResCard = ({resData})=>{
-    console.log(resData?.info?.name, "resData");
+    
     return (
         <div className='res-card'>
             <div className='res-img'>
