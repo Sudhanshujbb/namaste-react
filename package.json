@@ -6,7 +6,6 @@
     "test": "jest",
     "start": "parcel index.html",
     "build": "parcel build index.html"
-    
   },
   "repository": {
     "type": "git",
@@ -24,7 +23,8 @@
   },
   "dependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.1"
   },
   "proxy": "https://www.swiggy.com"
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ResCard from "./ResCard";
 import { resList } from "../../utils/constants";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 
 
@@ -141,7 +142,7 @@ const Body = ()=>{
            
                     return (
                         
-                        <ResCard resData={res} key={res.info.id}/>
+                        <Link to={"/restaurants/"+res.info.id}  ><ResCard resData={res} key={res.info.id} /></Link>
                     );
                 }):<Shimmer/>}
                 {loading && <p>Loading...</p>}
