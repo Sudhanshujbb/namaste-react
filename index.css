@@ -58,3 +58,16 @@
     margin-right: 1rem;
     height: 2rem;
 }
+
+.user-card{
+    padding: 1rem;
+    border: 2px solid grey;
+    width: 11rem ;
+    height: 9rem;
+}
+
+.user-card:hover{
+    padding: 0.5rem;
+    border: 2px solid black;
+    
+}
