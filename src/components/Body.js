@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import ResCard from "./ResCard";
 import { resList } from "../../utils/constants";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/useOnlineStatus";
-import DinoGame from "./DinoGame/DinoGame";
 import useResList from "../../utils/useResList";
 
+const DinoGame = lazy(()=>import('./DinoGame/DinoGame'))
 
 
 
@@ -147,7 +147,7 @@ const Body = ()=>{
     if(!onlinestatus){ return(
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <h1>Looks like you are Offline !! Check you Internet Connection</h1>
-            <DinoGame />
+             <Suspense fallback={<Shimmer/>}><DinoGame /></Suspense>
         </div>
     );}
 
