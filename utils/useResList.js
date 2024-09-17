@@ -11,7 +11,6 @@ const useResList = ()=>{
         });
         const data = await response.json();
         const restaurants = data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-        // console.log(restaurants, "RESList")
         setResList(restaurants);
       
     }

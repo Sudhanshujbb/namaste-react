@@ -1,4 +1,5 @@
 import React from "react";
+import UserContext from "../../utils/UserContext";
 class ClassyUser extends React.Component{
     constructor(props){
         super(props)
@@ -31,14 +32,20 @@ class ClassyUser extends React.Component{
         const {count1, count2 } = this.state;
         console.log(this.props.name,"Child Render")
         return (
-            <div className="user-card">
-                <div>Count: {count1}   {count2}</div>
-                <button onClick={()=>{this.setState({ count1:this.state.count1+1, count2: this.state.count2+1})}} >Click</button>
-                <img src={img_url} alt="GG"  style={{width: "1rem", height:"1rem"}}/>
-                <div>Name: {name}</div>
-                <div>Contact: sudhanshujbb@gmail.com</div>
-                <div>Location: {location}</div>
-            </div>
+            <UserContext.Consumer>
+                {data=>(
+                    <div className="border-2 border-black p-4">
+                        <div>{data.loggedInUser}</div>
+                        <div>Count: {count1}   {count2}</div>
+                        <button onClick={()=>{this.setState({ count1:this.state.count1+1, count2: this.state.count2+1})}} >Click</button>
+                        <img src={img_url} alt="GG"  style={{width: "1rem", height:"1rem"}}/>
+                        <div>Name: {name}</div>
+                        <div>Contact: sudhanshujbb@gmail.com</div>
+                        <div>Location: {location}</div>
+                    </div>
+                )}
+                
+            </UserContext.Consumer>
         );
     }
 

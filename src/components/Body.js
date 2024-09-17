@@ -1,10 +1,12 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect, lazy, Suspense, useContext } from "react";
 import ResCard from "./ResCard";
 import { resList } from "../../utils/constants";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/useOnlineStatus";
 import useResList from "../../utils/useResList";
+import isOpendResCard from "./IsOpenResCard";
+import UserContext from "../../utils/UserContext";
 
 const DinoGame = lazy(()=>import('./DinoGame/DinoGame'))
 
@@ -154,21 +156,23 @@ const Body = ()=>{
     if(filteredRestaurant?.length===0){
         return <Shimmer/>
     }
-
+    const IsOpen = isOpendResCard(ResCard)
+    const {loggedInUser, setUserName} = useContext(UserContext);
     return (
-        <div className='body'>
-            <div className='filter'> 
-                <input value={search} onChange={(e)=>{setSearch(e.target.value); handleSearch(e)  }}/>
-                <button onClick={handleSearch}>Search</button>
-                <button className="filter-btn" onClick={filterTopRatedRestaurant}>Top Rated Restaurant</button>
+        <div className='p-4'>
+            <div className='flex my-5 items-center justify-start' > 
+                <div className="border-3 border-blue-500"><input  className="border border-solid border-black py-1 px-2 w-96"  value={search} onChange={(e)=>{setSearch(e.target.value); handleSearch(e)  }}/></div>
+                <button className="bg-slate-300 px-4 py-1 mx-2 border-2 border-gray-400 rounded-md hover:border-1 hover:border-black" onClick={handleSearch}>Search</button>
+                <button className="border-2 mx-4 px-4 py-1 bg-slate-300 border-gray-400 rounded-md hover:border-1 hover:border-black" onClick={filterTopRatedRestaurant}>Top Rated Restaurant</button>
+
+                <input type="text" value={loggedInUser} onChange={(e)=>setUserName(e.target.value)}/>
             </div>
-            <div className='res-container'>
+            <div className='flex flex-wrap justify-between'>
                 
                 {filteredRestaurant?.map((res)=>{
-           
                     return (
                         
-                        <Link to={"/restaurants/"+res.info.id}  ><ResCard resData={res} key={res.info.id} /></Link>
+                        <Link to={"/restaurants/"+res.info.id} key={res.info.id}>{res.info.isOpen? <IsOpen resData={res} />  : <ResCard resData={res} /> }</Link>
                     );
                 })}
                 {loading && <p>Loading...</p>}

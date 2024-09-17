@@ -19,9 +19,14 @@
   "homepage": "https://github.com/Sudhanshujbb/namaste-react#readme",
   "devDependencies": {
     "parcel": "^2.12.0",
-    "process": "^0.11.10"
+    "postcss": "^8.4.45",
+    "process": "^0.11.10",
+    "tailwind": "^4.0.0",
+    "tailwindcss": "^3.4.11"
   },
   "dependencies": {
+    "@parcel/transformer-postcss": "^2.12.0",
+    "autoprefixer": "^9.8.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1"
