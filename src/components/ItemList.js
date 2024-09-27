@@ -5,7 +5,7 @@ const ItemList = ({tit, list, exp, setExp})=>{
     return (
         <div>
             <div className="border-b-2 border-blue-600 w-11/12 bg-slate-100 shadow-lg p-4">
-                <div className="flex justify-between" onClick={setExp}>
+                <div className="flex justify-between cursor-pointer" onClick={setExp}>
                     <div>{tit}</div>
                     <div >{ exp?'🔽':'▶️'}</div>
                 </div>

@@ -1,8 +1,8 @@
 import { cdn_url } from "../../utils/constants";
 const ResCard = ({resData})=>{
-    
+// console.log({resData});  
     return (
-        <div className='border-2 border-gray-600 p-4 my-2 w-64 min-h-[30rem] bg-slate-200 rounded-md hover:border-4 hover:border-black hover:bg-red-100' >
+        <div data-testid="res-card" className='border-2 border-gray-600 p-4 my-2 w-64 min-h-[30rem] bg-slate-200 rounded-md hover:border-4 hover:border-black hover:bg-red-100' >
             <div className='mb-2'>
                 <img className="w-53 h-43 rounded-md" src={cdn_url+ resData?.info?.cloudinaryImageId}/>
             </div>

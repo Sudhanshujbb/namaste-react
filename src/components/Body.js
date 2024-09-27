@@ -153,15 +153,15 @@ const Body = ()=>{
         </div>
     );}
 
+    const IsOpen = isOpendResCard(ResCard)
+    const {loggedInUser, setUserName} = useContext(UserContext);
     if(filteredRestaurant?.length===0){
         return <Shimmer/>
     }
-    const IsOpen = isOpendResCard(ResCard)
-    const {loggedInUser, setUserName} = useContext(UserContext);
     return (
         <div className='p-4'>
             <div className='flex my-5 items-center justify-start' > 
-                <div className="border-3 border-blue-500"><input  className="border border-solid border-black py-1 px-2 w-96"  value={search} onChange={(e)=>{setSearch(e.target.value); handleSearch(e)  }}/></div>
+                <div className="border-3 border-blue-500"><input  data-testid="search-input"  className="border border-solid border-black py-1 px-2 w-96"  value={search} onChange={(e)=>{setSearch(e.target.value); handleSearch(e)  }}/></div>
                 <button className="bg-slate-300 px-4 py-1 mx-2 border-2 border-gray-400 rounded-md hover:border-1 hover:border-black" onClick={handleSearch}>Search</button>
                 <button className="border-2 mx-4 px-4 py-1 bg-slate-300 border-gray-400 rounded-md hover:border-1 hover:border-black" onClick={filterTopRatedRestaurant}>Top Rated Restaurant</button>
 
